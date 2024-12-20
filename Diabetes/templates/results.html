@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prediction Result</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </head>
+  <body>
+    <div class="container result">
+      <header>
+        <h1>Prediction Result</h1>
+      </header>
+
+      <div class="result-box" data-aos="fade-up" data-aos-duration="1000">
+        <div class="result-message">
+          <h2>Your Prediction: <span id="result">{{ result }}</span></h2>
+          <p id="message">{{ message }}</p>
+        </div>
+
+        <div class="result-icon">
+          <!-- Display a green check for "Healthy" and a red cross for "At Risk" -->
+          {% if result == "Healthy" %}
+          <img src="/static/healthy-icon.png" alt="Healthy Icon" />
+          {% else %}
+          <img src="/static/at-risk-icon.png" alt="At Risk Icon" />
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="back-button">
+        <a href="/">Go Back</a>
+      </div>
+    </div>
+
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
